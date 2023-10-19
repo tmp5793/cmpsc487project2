@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project 2</title>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.2.1/dist/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.2.1/dist/js/materialize.min.js"></script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+<body>
+
+<nav class="indigo">
+  <div class="container">
+    <a href="#" class="brand-logo">Project 2</a>
+    <div class="nav-wrapper">
+    </div>
+  </div>
+</nav>
+
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <h4>Edit Employee</h4>
+    <form id="editEmployeeForm">
+      <div class="input-field">
+        <input type="text" id="edit_employee_name" name="employee_name">
+        <label for="edit_employee_name">New Employee Name: </label>
+      </div>
+      <div class="input-field">
+        <input type="text" id="edit_employee_description" name="employee_description">
+        <label for="edit_employee_description">New Employee Description: </label>
+      </div>
+      <div class="input-field">
+        <input type="text" id="edit_employee_image" name="employee_image">
+        <label for="edit_employee_image">New Employee Image: </label>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="saveChangesBtn">Save Changes</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="container">
+    <div class="col s4">
+      <label for="nameSearchInput">Search: </label>
+      <input type="text" id="nameSearchInput" placeholder="Search by name...">
+    </div>
+    <div class="col s4">
+      <label for="descSearchInput">.</label>
+      <input type="text" id="descSearchInput" placeholder="Search by description...">
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="container">
+    <div class="col s9">
+      <h2 class="center">Employees</h2>
+      <ul class="collection" id="items_ul">
+      </ul>
+    </div>
+
+    <div class="col s3">
+      <h2 class="center">Add Employee</h2>
+      <form id="add_item">
+        <label for="user_name">User Name: </label>
+        <input type="text" name="employee_name" id="user_name" placeholder="Enter user's name">
+        <label for="user_description">Description:  </label>
+        <input type="text" name="employee_description" id="user_description" placeholder="Enter user's description">
+        <label for="user_image">User Picture: </label>
+        <input type="text" name="employee_image" id="user_image" placeholder="Enter user's image link">
+        <button class="btn white-text indigo" type="submit">Add Employee</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="container">
+    <label for="sortByName">Sort By:  </label>
+    <button id="sortByName" class="btn white-text indigo" type="submit">Name</button>
+    <button id="sortByDesc" class="btn white-text indigo" type="submit">Description</button>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+<script>
+  // Import the functions you need from the SDKs you need
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyC2Ejve0p_aZ3ImYh-IMCSAB7VQk-tvRUc",
+    authDomain: "cmpsc487project2.firebaseapp.com",
+    projectId: "cmpsc487project2",
+    storageBucket: "cmpsc487project2.appspot.com",
+    messagingSenderId: "751679999737",
+    appId: "1:751679999737:web:05f070900aa979049cdc28",
+    measurementId: "G-JHX90X9T69"
+  };
+
+  firebase.initializeApp(firebaseConfig)
+  const db = firebase.firestore()
+  db.settings({})
+  console.log(db)
+
+  $(document).ready(function(){
+    $(".create-edit-button").click(function(){
+      $("#editModal").modal("open");
+    });
+  });
+
+</script>
+<script src="app.js"></script>
+</body>
+</html>
